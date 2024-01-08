@@ -1,3 +1,6 @@
+#ifndef _BOOK_
+#define _BOOK_
+
 #include <string>
 #include <iostream>
 
@@ -73,3 +76,5 @@ class BookList{
             }
         }
 };
+
+#endif

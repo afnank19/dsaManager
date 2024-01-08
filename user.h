@@ -1,10 +1,13 @@
+#ifndef _USER_
+#define _USER_
+
 #include <string>
 #include <iostream>
 
 using namespace std;
 
 struct User{
-    int ID;
+    string ID;
     std::string name, email;
     User *nextUser;
 };
@@ -16,7 +19,7 @@ class UserList{
             head = nullptr;
         }
 
-        void insertAtEnd(int ID, std::string name, std::string email){
+        void insertAtEnd(string ID, std::string name, std::string email){
             User *temp = new User;
             temp->ID = ID;
             temp->name = name;
@@ -37,8 +40,8 @@ class UserList{
         }
         void display(){
             User *tP  = head;
-            while(tP!= nullptr){
-                
+            while(tP->nextUser != nullptr){
+                cout <<"ID: " << tP->ID <<"| Email: " << tP->email << endl;
                 tP =  tP->nextUser;
             }
             std::cout << std::endl;
@@ -72,3 +75,5 @@ class UserList{
             }
         }
 };
+
+#endif
