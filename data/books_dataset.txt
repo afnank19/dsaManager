@@ -1,0 +1,50 @@
+9780743273565, The Great Gatsby, F. Scott Fitzgerald
+9780061120084, To Kill a Mockingbird, Harper Lee
+9780451524935, 1984, George Orwell
+9780316769487, The Catcher in the Rye, J.D. Salinger
+9780141439518, Pride and Prejudice, Jane Austen
+9780618640157, The Lord of the Rings, J.R.R. Tolkien
+9780547928227, The Hobbit, J.R.R. Tolkien
+9780307474278, The Da Vinci Code, Dan Brown
+9780590353427, Harry Potter and the Sorcerer's Stone, J.K. Rowling
+9780439023480, The Hunger Games, Suzanne Collins
+9780385086959, The Shining, Stephen King
+9780061122415, The Alchemist, Paulo Coelho
+9780451526342, Animal Farm, George Orwell
+9780061126116, Brave New World, Aldous Huxley
+9781451673319, Fahrenheit 451, Ray Bradbury
+9780307387899, The Road, Cormac McCarthy
+9781594631931, The Kite Runner, Khaled Hosseini
+9780064409410, The Chronicles of Narnia, C.S. Lewis
+9781416549631, Gone with the Wind, Margaret Mitchell
+9780307269751, The Girl with the Dragon Tattoo, Stieg Larsson
+9780061122415, One Hundred Years of Solitude, Gabriel Garcia Marquez
+9780141439747, Great Expectations, Charles Dickens
+9781853260087, Moby-Dick, Herman Melville
+9780143039952, The Odyssey, Homer
+9780141185361, The Road to Wigan Pier, George Orwell
+9780486280615, The War of the Worlds, H.G. Wells
+9780140449266, The Count of Monte Cristo, Alexandre Dumas
+9780156029438, The Color Purple, Alice Walker
+9780141442464, The Picture of Dorian Gray, Oscar Wilde
+9780140437881, The Adventures of Sherlock Holmes, Arthur Conan Doyle
+9780143105442, Crime and Punishment, Fyodor Dostoevsky
+9780141441771, Wuthering Heights, Emily Bronte
+9780143039433, The Grapes of Wrath, John Steinbeck
+9780140449242, The Brothers Karamazov, Fyodor Dostoevsky
+9780684803357, The Old Man and the Sea, Ernest Hemingway
+9780451419435, Les Misérables, Victor Hugo
+9780451191151, The Fountainhead, Ayn Rand
+9780684800707, The Sun Also Rises, Ernest Hemingway
+9781250301697, The Silent Patient, Alex Michaelides
+9781594634024, The Girl on the Train, Paula Hawkins
+9780553418026, The Martian, Andy Weir
+9780385490818, The Handmaid's Tale, Margaret Atwood
+9780425232200, The Help, Kathryn Stockett
+9780142001745, The Secret Life of Bees, Sue Monk Kidd
+9780525478812, The Fault in Our Stars, John Green
+9780451488512, The Pillars of the Earth, Ken Follett
+9780451494346, The Girl in the Spider's Web, David Lagercrantz
+9780062316097, Sapiens: A Brief History of Humankind, Yuval Noah Harari
+9780399590504, Educated, Tara Westover
+9780399590597, The Water Dancer, Ta-Nehisi Coates
