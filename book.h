@@ -75,6 +75,21 @@ class BookList{
                 head = temp;
             }
         }
+        Book* searchBooks(string name, bool isBorrowing){
+            Book *tP = head;
+
+            while(tP != nullptr){
+                if(tP->name == name && tP->availability){
+                    if(isBorrowing){
+                        tP->availability = false;
+                    }
+                    break;
+                }
+                tP = tP->nextBook;
+            }
+
+            return tP;
+        }
 };
 
 #endif

@@ -1,10 +1,12 @@
 #include <iostream>
 #include <fstream>
+#include <chrono>
+#include <ctime>
 #include "book.h"
 #include "user.h"
 
 //initializes the book linked list for the system
-void init_books(BookList booklist){
+BookList init_books(BookList booklist){
     long long ISBN;
     string name, author,ISBN_string;
 
@@ -25,10 +27,11 @@ void init_books(BookList booklist){
         booklist.insertAtEnd(ISBN, name, author);
     }
 
-    booklist.display();
+    //booklist.display();
+    return booklist;
 };
 
-void init_users(UserList userlist){
+UserList init_users(UserList userlist){
     int ID;
     string name, email, ID_string;
 
@@ -48,11 +51,24 @@ void init_users(UserList userlist){
         userlist.insertAtEnd(ID_string, name, email);
     }
 
-    userlist.display();
+    return userlist;
+    //userlist.display();
 };
+string GetSysTime(){
+    auto currentTime = std::chrono::system_clock::now();
+    std::time_t currentTimeT = std::chrono::system_clock::to_time_t(currentTime);
 
-//manages the initialization
-void init_system(BookList booklist, UserList userlist){
-    init_books(booklist);
-    init_users(userlist);
-};
+    std::string currentTimeString = std::ctime(&currentTimeT);
+
+    return currentTimeString;
+}
+
+void init_transaction(long long ISBN, string bookname, string author, string user_id, string user_name){
+    ofstream transaction_file("data/transaction_history.txt");
+    string currentTime = GetSysTime();
+
+    transaction_file << ISBN << "," << bookname << "," << author << " :: Borrowed by => " << 
+                        user_id << ": " << user_name << " at " << currentTime;
+
+    cout << "TRANSACTION COMPLETE, check data/transaction_history.txt for complete information!";
+}
