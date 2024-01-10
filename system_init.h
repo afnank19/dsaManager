@@ -113,11 +113,11 @@ void update_borrow(BookList b){
         getline(getAvailFromTransaction, throwaway,'\n');
         //cout << ISBN_string << " = " << isAllDigits(ISBN_string) << endl;
         
-        if(ISBN_string != "R"){
+        if(ISBN_string != "R" and ISBN_string != "\n"){
             if(isAllDigits(ISBN_string)){
                 ISBN_check = stoll(ISBN_string);
-                b.updateAvailability(ISBN_check, bookname, false);
             }
+            b.updateAvailability(ISBN_check, bookname, false);
         }else{
             b.updateAvailability(ISBN_check, bookname, true);
         }

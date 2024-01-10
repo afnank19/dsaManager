@@ -10,7 +10,7 @@ void DisplayOptions(){
     cout << "Press (B) to borrow" << endl;
     cout << "Press (R) to return" << endl;
     cout << "Press (S) to search" << endl;
-    cout << "Press (C) to sort" << endl;
+    cout << "Press (C) to sort(A-Z)" << endl;
     cout << "Press (A) to Add new book" << endl;
 }
 
@@ -71,7 +71,11 @@ int main(){
             return_transaction(bookName, recepientUser->ID, recepientUser->name,recepientUser->email);
         }
         break;
-        
+        case 'c': {
+            book.sortBooks();
+            book.display();
+        }
+        break;
         default:
             cout << "Invalid Input" << endl;
             break;

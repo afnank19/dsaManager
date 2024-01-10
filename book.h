@@ -113,6 +113,34 @@ class BookList{
 
             return;
         }
+        int countNodes(){
+            Book *cntr = head;
+            int count = 0;
+            while(cntr != nullptr){
+                cntr = cntr->nextBook;
+                count++;
+            }
+
+            return count;
+        }
+        void sortBooks(){
+            int count = countNodes();
+
+            for(int i = 0; i < count; i++){
+                Book *curr = head, *prev = head;
+                while(curr->nextBook != nullptr){
+                    prev = curr;
+                    curr = curr->nextBook;
+
+                    if(prev->name[0] >= curr->name[0]){
+                        string temp;
+                        temp = curr->name;
+                        curr->name = prev->name;
+                        prev->name = temp;
+                    }
+                }
+            }
+        }
 };
 
 #endif
