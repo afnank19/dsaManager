@@ -42,7 +42,7 @@ class BookList{
         void display(){
             Book *tP  = head;
             while(tP!= nullptr){
-                cout << "Name: " << tP->name <<" "<< tP->availability <<endl;
+                cout << "Name: " << tP->name <<"||  Author: "<< tP->author <<endl;
                 tP =  tP->nextBook;
             }
             std::cout << std::endl;
@@ -159,22 +159,39 @@ class BookList{
 
             return count;
         }
-        void sortBooks(){
+        void sortBooks(bool trueIfByName){
             int count = countNodes();
 
-            for(int i = 0; i < count; i++){
-                Book *curr = head, *prev = head;
-                while(curr->nextBook != nullptr){
-                    prev = curr;
-                    curr = curr->nextBook;
+            if(trueIfByName){
+                for(int i = 0; i < count; i++){
+                    Book *curr = head, *prev = head;
+                    while(curr->nextBook != nullptr){
+                        prev = curr;
+                        curr = curr->nextBook;
 
-                    if(prev->name[0] >= curr->name[0]){
-                        string temp;
-                        temp = curr->name;
-                        curr->name = prev->name;
-                        prev->name = temp;
+                        if(prev->name[0] >= curr->name[0]){
+                            string temp;
+                            temp = curr->name;
+                            curr->name = prev->name;
+                            prev->name = temp;
+                        }
                     }
                 }
+            }else{
+               for(int i = 0; i < count; i++){
+                    Book *curr = head, *prev = head;
+                    while(curr->nextBook != nullptr){
+                        prev = curr;
+                        curr = curr->nextBook;
+
+                        if(prev->author[0] >= curr->author[0]){
+                            string temp;
+                            temp = curr->name;
+                            curr->name = prev->name;
+                            prev->name = temp;
+                        }
+                    }
+                } 
             }
         }
 };

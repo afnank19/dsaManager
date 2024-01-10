@@ -33,7 +33,7 @@ int main(){
     while(input != 'x'){
         cout << endl;
         DisplayOptions();
-        cin.ignore();
+        //cin.ignore();
         cin >> input;
 
         switch (input){
@@ -174,7 +174,18 @@ int main(){
         }
         break;
         case 'c': {
-            book.sortBooks();
+            char sort_by;
+            bool trueIfByName = true;
+            cout << "Press (M) to sort by Name" << endl;
+            cout << "Press (J) to sort by Author" << endl;
+            cin >> sort_by;
+
+            if(sort_by == 'm')
+                trueIfByName = true;
+            else if(sort_by == 'j')
+                trueIfByName == false;
+
+            book.sortBooks(trueIfByName);
             book.display();
         }
         break;
