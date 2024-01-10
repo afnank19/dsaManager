@@ -94,6 +94,31 @@ class BookList{
 
             return tP;
         }
+        Book* searchThruISBN(long long ISBN){
+            Book *tP = head;
+
+            while(tP != nullptr){
+                if(tP->ISBN == ISBN){
+                    break;
+                }
+                tP = tP->nextBook;
+            }
+
+            return tP;
+        }
+        Book* searchThruAuthor(string author){
+            Book *tP = head;
+
+            while(tP != nullptr){
+                if(tP->author == author){
+                    break;
+                }
+                tP = tP->nextBook;
+            }
+
+            return tP;
+        }
+
         void updateAvailability(long long ISBN, string bookname, bool returnFix){
             Book *tP = head;
 

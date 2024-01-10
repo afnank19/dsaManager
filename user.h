@@ -86,6 +86,17 @@ class UserList{
 
             return tP;
         }
+        User* searchByName(string name){
+            User *tP = head;
+
+            while(tP != nullptr){
+                if(tP->name == name){
+                    break;
+                }
+                tP = tP->nextUser;
+            }
+            return tP;
+        }
 };
 
 #endif

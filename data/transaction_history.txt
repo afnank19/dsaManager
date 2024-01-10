@@ -4,3 +4,4 @@
 9780385086959,The Shining,Stephen King :: Borrowed by => 4: Alice Brown at Wed Jan 10 13:16:09 2024
 R,The Shining,Returned by => 4,Alice Brown,alice.brown@email.net at Wed Jan 10 15:10:32 2024
 9780385086959,The Shining,Stephen King :: Borrowed by => 5: Charlie Wilson at Wed Jan 10 20:00:45 2024
+9780451524935,1984,George Orwell :: Borrowed by => 1: John Doe at Wed Jan 10 20:36:35 2024
