@@ -19,7 +19,7 @@ class UserList{
             head = nullptr;
         }
 
-        void insertAtEnd(string ID, std::string name, std::string email){
+        void insertNewUser(string ID, std::string name, std::string email){
             User *temp = new User;
             temp->ID = ID;
             temp->name = name;

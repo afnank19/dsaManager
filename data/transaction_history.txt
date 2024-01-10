@@ -1,1 +1,6 @@
-9780061122415,The Alchemist,Paulo Coelho :: Borrowed by => 1: John Doe at Tue Jan 09 22:56:10 2024
+
+9780061122415,The Alchemist,Paulo Coelho :: Borrowed by => 1: John Doe at Wed Jan 10 13:15:44 2024
+9780547928227,The Hobbit,J.R.R. Tolkien :: Borrowed by => 2: Jane Smith at Wed Jan 10 13:15:57 2024
+9780385086959,The Shining,Stephen King :: Borrowed by => 4: Alice Brown at Wed Jan 10 13:16:09 2024
+R,The Shining,Returned by => 4,Alice Brown,alice.brown@email.net at Wed Jan 10 15:10:32 2024
+9780385086959,The Shining,Stephen King :: Borrowed by => 5: Charlie Wilson at Wed Jan 10 18:20:23 2024

@@ -8,13 +8,10 @@ using namespace std;
 
 void DisplayOptions(){
     cout << "Press (B) to borrow" << endl;
+    cout << "Press (R) to return" << endl;
     cout << "Press (S) to search" << endl;
-    cout << "Press (A) to sort" << endl;
-}
-string user_input_handler(){
-    string user_input;
-    cin >> user_input;
-    return user_input;
+    cout << "Press (C) to sort" << endl;
+    cout << "Press (A) to Add new book" << endl;
 }
 
 int main(){
@@ -26,6 +23,7 @@ int main(){
     //init_system(book, user);
     book = init_books(book);
     user = init_users(user);
+    update_borrow(book);
 
     string bookName;
 
@@ -39,9 +37,9 @@ int main(){
             cout << "Enter FULL book name: ";
             cin.ignore();
             getline(cin, bookName);
-            Book *borrowedBook = book.searchBooks(bookName, true);
+            Book *borrowedBook = book.searchBooks(bookName, true, false);
             if(borrowedBook == nullptr){
-                cout << "Book was not found or is not available.";
+                cout << "--Book was not found or is not available.--";
                 break;
             }
             string user_id;
@@ -51,12 +49,31 @@ int main(){
             init_transaction(borrowedBook->ISBN,borrowedBook->name,borrowedBook->author,user_id, recepientUser->name);
         }
         break;
-        case 's':{
-            cout << "haha";
+        case 'r':{
+            string bookName;
+            cout << "Enter FULL bookname you want to return: ";
+            cin.ignore();
+            getline(cin, bookName);
+
+            Book *recievedBook = book.searchBooks(bookName, false, true);
+            if(recievedBook == nullptr){
+                cout << "--Recieved book is NOT part of Library!--" << endl;
+                break;
+            }
+            if(recievedBook->availability){
+                cout << "--Book Was Not Borrowed--" << endl;
+                break;
+            }
+            string user_id;
+            cout << "Enter your ID: ";
+            cin >> user_id;
+            User *recepientUser = user.searchUsers(user_id);
+            return_transaction(bookName, recepientUser->ID, recepientUser->name,recepientUser->email);
         }
         break;
         
         default:
+            cout << "Invalid Input" << endl;
             break;
         }
     }

@@ -20,7 +20,7 @@ class BookList{
             head = nullptr;
         }
 
-        void insertAtEnd(long long ISBN, std::string name, std::string author){
+        void insertNewBook(long long ISBN, std::string name, std::string author){
             Book *temp = new Book;
             temp->ISBN = ISBN;
             temp->name = name;
@@ -75,7 +75,7 @@ class BookList{
                 head = temp;
             }
         }
-        Book* searchBooks(string name, bool isBorrowing){
+        Book* searchBooks(string name, bool isBorrowing, bool isReturning){
             Book *tP = head;
 
             while(tP != nullptr){
@@ -85,10 +85,33 @@ class BookList{
                     }
                     break;
                 }
+                else if(isReturning && tP->name == name && !tP->availability){
+                    tP->availability = true;
+                    break;
+                }
                 tP = tP->nextBook;
             }
 
             return tP;
+        }
+        void updateAvailability(long long ISBN, string bookname, bool returnFix){
+            Book *tP = head;
+
+            while(tP != nullptr){
+                if(tP->name == bookname && returnFix){
+                    tP->availability = true;
+                    cout << tP->name << tP->availability << endl;
+                    return;
+                }
+                if(tP->ISBN == ISBN){
+                    tP->availability = false;
+                    cout << tP->name << tP->availability << endl;
+                    return;
+                }
+                tP = tP->nextBook;
+            }
+
+            return;
         }
 };
 

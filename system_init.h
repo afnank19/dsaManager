@@ -24,7 +24,7 @@ BookList init_books(BookList booklist){
         author.erase(author.find_last_not_of(" \t\n\r\f\v") + 1);
         //cout << name << " : " << author << endl;
         ISBN = stoll(ISBN_string);
-        booklist.insertAtEnd(ISBN, name, author);
+        booklist.insertNewBook(ISBN, name, author);
     }
 
     //booklist.display();
@@ -48,7 +48,7 @@ UserList init_users(UserList userlist){
         email.erase(email.find_last_not_of(" \t\n\r\f\v") + 1);
         //cout<< ID_string << name << " : " << email << endl;
         //ID = stoi(ID_string);
-        userlist.insertAtEnd(ID_string, name, email);
+        userlist.insertNewUser(ID_string, name, email);
     }
 
     return userlist;
@@ -63,12 +63,66 @@ string GetSysTime(){
     return currentTimeString;
 }
 
-void init_transaction(long long ISBN, string bookname, string author, string user_id, string user_name){
-    ofstream transaction_file("data/transaction_history.txt");
-    string currentTime = GetSysTime();
+ofstream transaction_file;
 
-    transaction_file << ISBN << "," << bookname << "," << author << " :: Borrowed by => " << 
-                        user_id << ": " << user_name << " at " << currentTime;
+void init_transaction(long long ISBN, string bookname, string author, string user_id, string user_name){
+    transaction_file.open("data/transaction_history.txt", ios::app);
+
+    string currentTime = GetSysTime();
+    string to_file = to_string(ISBN) +"," + bookname + "," + author + " :: Borrowed by => " + 
+                        user_id + ": " + user_name + " at " + currentTime;
+
+    transaction_file << to_file;
 
     cout << "TRANSACTION COMPLETE, check data/transaction_history.txt for complete information!";
+    transaction_file.close();
+}
+void return_transaction(string bookname, string user_id, string user_name, string user_email){
+    transaction_file.open("data/transaction_history.txt", ios::app);
+
+    string currentTime = GetSysTime();
+    //ofstream transaction_file("data/transaction_history.txt");
+
+    transaction_file << "R," << bookname << ",Returned by => " << user_id << "," <<
+                        user_name << "," << user_email << " at " << currentTime;
+
+    cout << "RETURN COMPLETE, check data/transaction_history.txt for complete information!";
+    transaction_file.close();
+}
+bool isAllDigits(string str){
+    if(str == ""){
+        return false;
+    }
+    for(int i = 0; i < str.length(); i++){
+        if (!isdigit(str[i])) {
+            return false; // If a non-numeric character is found, return false
+        }
+    }
+    return true;
+}
+
+void update_borrow(BookList b){
+    ifstream getAvailFromTransaction("data/transaction_history.txt");
+
+    string ISBN_string, throwaway, bookname;
+    long long ISBN_check;
+
+    while(getAvailFromTransaction.good()){
+        getline(getAvailFromTransaction,ISBN_string,',');
+        getline(getAvailFromTransaction, bookname,',');
+        getline(getAvailFromTransaction, throwaway,'\n');
+        //cout << ISBN_string << " = " << isAllDigits(ISBN_string) << endl;
+        
+        if(ISBN_string != "R"){
+            if(isAllDigits(ISBN_string)){
+                ISBN_check = stoll(ISBN_string);
+                b.updateAvailability(ISBN_check, bookname, false);
+            }
+        }else{
+            b.updateAvailability(ISBN_check, bookname, true);
+        }
+        
+    }
+
+    getAvailFromTransaction.close();
 }
