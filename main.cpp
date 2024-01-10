@@ -33,6 +33,7 @@ int main(){
     while(input != 'x'){
         cout << endl;
         DisplayOptions();
+        cin.ignore();
         cin >> input;
 
         switch (input){
@@ -54,6 +55,10 @@ int main(){
             cout << "Enter your ID: ";
             cin >> user_id;
             User *recepientUser = user.searchUsers(user_id);
+            if(recepientUser == nullptr){
+                cout << "Not a User!" << endl;
+                break;
+            }
             init_transaction(borrowedBook->ISBN,borrowedBook->name,borrowedBook->author,user_id, recepientUser->name);
         }
         break;
@@ -158,7 +163,13 @@ int main(){
                         break;
                     }
                     cout << recepientUser->ID << "," << recepientUser->name << endl;
+                }else{
+                    cout << "--invalid--" << endl;
+                    break;
                 }
+            }else{
+                cout << "FATAL: WRONG INPUT" << endl;
+                break;
             }
         }
         break;
@@ -174,8 +185,10 @@ int main(){
             cout << "Enter ISBN: ";
             cin >> ISBN;
             cout << "Enter book name: ";
+            cin.ignore();
             getline(cin, name);
             cout << "Enter author: ";
+            cin.ignore();
             getline(cin, author);
 
             book.insertNewBook(ISBN, name, author);
