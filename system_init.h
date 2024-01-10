@@ -112,8 +112,9 @@ void update_borrow(BookList b){
         getline(getAvailFromTransaction, bookname,',');
         getline(getAvailFromTransaction, throwaway,'\n');
         //cout << ISBN_string << " = " << isAllDigits(ISBN_string) << endl;
+        ISBN_string.erase(0, ISBN_string.find_first_not_of(" \t\n\r\f\v"));
         
-        if(ISBN_string != "R" and ISBN_string != "\n"){
+        if(ISBN_string != "R" and ISBN_string != "\n" and ISBN_string != ""){
             if(isAllDigits(ISBN_string)){
                 ISBN_check = stoll(ISBN_string);
             }

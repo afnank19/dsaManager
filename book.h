@@ -42,7 +42,7 @@ class BookList{
         void display(){
             Book *tP  = head;
             while(tP!= nullptr){
-                cout << "Name: " << tP->name << endl;
+                cout << "Name: " << tP->name <<" "<< tP->availability <<endl;
                 tP =  tP->nextBook;
             }
             std::cout << std::endl;
@@ -94,6 +94,17 @@ class BookList{
 
             return tP;
         }
+        bool getAvailability(string name){
+            Book *tP = head;
+
+            while(tP != nullptr){
+                if(tP->name == name){
+                    return tP->availability;
+                }
+                tP = tP->nextBook;
+            }
+            return false;
+        }
         Book* searchThruISBN(long long ISBN){
             Book *tP = head;
 
@@ -128,7 +139,7 @@ class BookList{
                     cout << tP->name << tP->availability << endl;
                     return;
                 }
-                if(tP->ISBN == ISBN){
+                if(tP->ISBN == ISBN && tP->name == bookname){
                     tP->availability = false;
                     cout << tP->name << tP->availability << endl;
                     return;

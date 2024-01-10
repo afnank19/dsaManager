@@ -9,6 +9,7 @@ using namespace std;
 void DisplayOptions(){
     cout << "Library Managment System" << endl;
     cout << "Please choose from the options below:" << endl;
+    cout << "Press (D) to display all books" << endl;
     cout << "Press (B) to borrow" << endl;
     cout << "Press (R) to return" << endl;
     cout << "Press (S) to search" << endl;
@@ -35,6 +36,11 @@ int main(){
         cin >> input;
 
         switch (input){
+        case 'd':{
+            book.display();
+        }
+        break;
+
         case 'b':{
             cout << "Enter FULL book name: ";
             cin.ignore();
@@ -58,11 +64,15 @@ int main(){
             getline(cin, bookName);
 
             Book *recievedBook = book.searchBooks(bookName, false, true);
+            bool availinSet;
             if(recievedBook == nullptr){
                 cout << "--Recieved book is NOT part of Library!--" << endl;
                 break;
+            }else if(recievedBook != nullptr){
+                availinSet = false;
             }
-            if(recievedBook->availability){
+            cout << availinSet;
+            if(availinSet){
                 cout << "--Book Was Not Borrowed--" << endl;
                 break;
             }
@@ -76,6 +86,7 @@ int main(){
             }
             return_transaction(bookName, recepientUser->ID, recepientUser->name,recepientUser->email);
         }
+        break;
         case 's':{
             char search_in;
             cout << "Press (B) to search books" << endl;
@@ -100,6 +111,7 @@ int main(){
                     cout << result->ISBN << "," << result->name << "," << result->author << endl;
                 }else if(search_in == 'n'){
                     cout << "Enter Book Name: ";
+                    cin.ignore();
                     getline(cin, name);
                     Book *result =book.searchBooks(name, false,false);
                     if(result == nullptr){
@@ -110,6 +122,7 @@ int main(){
                 }
                 else if(search_in == 't'){
                     cout << "Enter Author:";
+                    cin.ignore();
                     getline(cin, author);
                     Book *result =book.searchThruAuthor(author);
                     if(result == nullptr){
@@ -128,6 +141,7 @@ int main(){
                 cin >> search_in;
                 if(search_in == 'k'){
                     cout << "Enter user name:";
+                    cin.ignore();
                     getline(cin, name);
                     User *recepientUser = user.searchByName(name);
                     if(recepientUser == nullptr){
@@ -151,6 +165,20 @@ int main(){
         case 'c': {
             book.sortBooks();
             book.display();
+        }
+        break;
+        case 'a': {
+            long long ISBN;
+            string name, author;
+
+            cout << "Enter ISBN: ";
+            cin >> ISBN;
+            cout << "Enter book name: ";
+            getline(cin, name);
+            cout << "Enter author: ";
+            getline(cin, author);
+
+            book.insertNewBook(ISBN, name, author);
         }
         break;
         default:
